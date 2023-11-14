@@ -21,7 +21,7 @@ public class WaaOffensiveWords {
     private static final int MAX_BAD_WORD_REQUESTS = 5;
     private static final long BAN_TIME_MILLIS = 15 * 60 * 1000; // 15 minutes ban
 
-    @Before("execution(* edu.miu.springsecurity1.controller.*.*(..))")
+    @Before("execution(* edu.miu.springsecurity1.controller.ProductController.*(..))")
     public void filterOffensiveWordsAndRequests(JoinPoint joinPoint) throws IllegalAccessException {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
