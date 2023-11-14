@@ -1,6 +1,6 @@
 package com.example.lab5.Service.Impl;
 
-import com.example.lab5.Aspect.ExecutionTime;
+
 import com.example.lab5.Model.Category;
 import com.example.lab5.Repository.CategoryRepo;
 import com.example.lab5.Service.CategoryService;
@@ -15,7 +15,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Category findById(int id) {
         return categoryRepo.findById(id);
     }
-@ExecutionTime
+
     @Override
     public Category saveCategory(Category category) {
         return categoryRepo.save(category);

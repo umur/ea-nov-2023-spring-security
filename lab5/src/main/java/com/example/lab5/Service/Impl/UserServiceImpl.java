@@ -2,22 +2,25 @@ package com.example.lab5.Service.Impl;
 
 import com.example.lab5.Model.User;
 import com.example.lab5.Service.UserService;
-import com.example.lab5.Aspect.ExecutionTime;
+
 import com.example.lab5.Repository.UserRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepo userRepo;
+    private final PasswordEncoder passwordEncoder;
     @Override
     public User findById(int id) {
         return userRepo.findById(id);
     }
-@ExecutionTime
+
     @Override
     public User saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
     }
 

@@ -2,7 +2,7 @@ package com.example.lab5.Service.Impl;
 
 import com.example.lab5.Model.Review;
 import com.example.lab5.Repository.ReviewRepo;
-import com.example.lab5.Aspect.ExecutionTime;
+
 import com.example.lab5.Service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class ReviewServiceImpl implements ReviewService {
     public Review findById(int id) {
         return reviewRepo.findById(id);
     }
-@ExecutionTime
+
     @Override
     public Review saveReview(Review review) {
         return reviewRepo.save(review);

@@ -4,7 +4,7 @@ import com.example.lab5.Model.Category;
 import com.example.lab5.Model.Product;
 import com.example.lab5.Repository.ProductRepo;
 import com.example.lab5.Service.ProductService;
-import com.example.lab5.Aspect.ExecutionTime;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
     public Product findById(int id) {
         return productRepo.findById(id);
     }
-@ExecutionTime
+
     @Override
     public Product saveProduct(Product product) {
         return productRepo.save(product);
