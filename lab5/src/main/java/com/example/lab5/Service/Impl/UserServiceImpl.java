@@ -5,12 +5,15 @@ import com.example.lab5.Service.UserService;
 
 import com.example.lab5.Repository.UserRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
     @Override
@@ -33,4 +36,6 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(int id) {
     userRepo.deleteById(id);
     }
+
+
 }
