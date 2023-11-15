@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "3a19c58f-bac3-40cd-9040-6e8920ed88f4",
+		"name": "Data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "80947",
+		"_collection_link": "https://orange-crescent-754564.postman.co/workspace/de932940-1cc9-4a91-8d0a-7590b25d4b15/collection/80947-3a19c58f-bac3-40cd-9040-6e8920ed88f4?action=share&creator=80947&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "findAllByPriceGreaterThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store/findAllByPriceGreaterThan?minPrice=500",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"findAllByPriceGreaterThan"
+					],
+					"query": [
+						{
+							"key": "minPrice",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllProductsInCatCategoryAndLessThanMaxPrice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store/findAllProductsInCatCategoryAndLessThanMaxPrice?cat=Monitors&maxPrice=200",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"findAllProductsInCatCategoryAndLessThanMaxPrice"
+					],
+					"query": [
+						{
+							"key": "cat",
+							"value": "Monitors"
+						},
+						{
+							"key": "maxPrice",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllProductsByNameContains",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store/findAllByNameContains?keyword=Samsung",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"findAllByNameContains"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "Samsung"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllReviewsByProductId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store/findAllReviewsByProductId?id=6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"findAllReviewsByProductId"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
