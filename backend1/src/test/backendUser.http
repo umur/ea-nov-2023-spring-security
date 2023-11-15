@@ -1,0 +1,89 @@
+GET http://localhost:8080/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MDg4OSwiZXhwIjoxNjk3NzY0NDg5fQ.f70ePShjhZsBQ7sp41roToop9_fsBEeKnZ89zxaWZ6mHiaEcjAJfSBCnNBZhDdCRhyP0u-Ee7V_fcLvmN7IQJQ
+
+###
+POST http://localhost:8080/products
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MDg4OSwiZXhwIjoxNjk3NzY0NDg5fQ.f70ePShjhZsBQ7sp41roToop9_fsBEeKnZ89zxaWZ6mHiaEcjAJfSBCnNBZhDdCRhyP0u-Ee7V_fcLvmN7IQJQ
+Content-Type: application/json
+
+{
+  "title": "Gold",
+  "name": "ring"
+}
+
+###
+GET http://localhost:8080/products/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MDg4OSwiZXhwIjoxNjk3NzY0NDg5fQ.f70ePShjhZsBQ7sp41roToop9_fsBEeKnZ89zxaWZ6mHiaEcjAJfSBCnNBZhDdCRhyP0u-Ee7V_fcLvmN7IQJQ
+Content-Type: application/json
+
+###
+DELETE http://localhost:8080/products/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MDg4OSwiZXhwIjoxNjk3NzY0NDg5fQ.f70ePShjhZsBQ7sp41roToop9_fsBEeKnZ89zxaWZ6mHiaEcjAJfSBCnNBZhDdCRhyP0u-Ee7V_fcLvmN7IQJQ
+Content-Type: application/json
+
+###
+PUT http://localhost:8080/products/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MDg4OSwiZXhwIjoxNjk3NzY0NDg5fQ.f70ePShjhZsBQ7sp41roToop9_fsBEeKnZ89zxaWZ6mHiaEcjAJfSBCnNBZhDdCRhyP0u-Ee7V_fcLvmN7IQJQ
+Content-Type: application/json
+
+{
+  "title": "Gold",
+  "name": "ring"
+}
+
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "John",
+  "email": "user2@gmail.com",
+  "password": "pass",
+  "ssn": "123456789",
+  "roles": [
+    {
+      "title": "ROLE_USER"
+    },
+    {
+      "title": "ROLE_ADMIN"
+    }
+  ]
+}
+
+###
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "user1@gmail.com",
+  "password": "pass"
+}
+
+###
+GET http://localhost:8080/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MzU4NCwiZXhwIjoxNjk3NzY3MTg0fQ.48Xh1PFRphlexvplSVWXH4TXqqKUlOYQ81OMY0ndekVLdq5yq1yWzULODMj5Vj7MYpg9QawNElrZm-THtui9ZQ
+
+###
+DELETE http://localhost:8080/users/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MTgyMCwiZXhwIjoxNjk3NzY1NDIwfQ.RzE6BddxgOBez0HFmNP_lsKdnOj_Uxrzvf275AETfHIRFF541P6UbioHy2aYXZAqRGn6Q3IHtegpsBxxOV1M-g
+
+###
+GET http://localhost:8080/users/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MzU4NCwiZXhwIjoxNjk3NzY3MTg0fQ.48Xh1PFRphlexvplSVWXH4TXqqKUlOYQ81OMY0ndekVLdq5yq1yWzULODMj5Vj7MYpg9QawNElrZm-THtui9ZQ
+
+###
+PUT http://localhost:8080/users/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLHVzZXIxQGdtYWlsLmNvbSIsImlzcyI6ImRlbW8iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY5Nzc2MTgyMCwiZXhwIjoxNjk3NzY1NDIwfQ.RzE6BddxgOBez0HFmNP_lsKdnOj_Uxrzvf275AETfHIRFF541P6UbioHy2aYXZAqRGn6Q3IHtegpsBxxOV1M-g
+
+{
+  "name": "John",
+  "email": "user1@gmail.com",
+  "password": "pass",
+  "ssn": "123456789",
+  "roles": ["ROLE_USER","ROLE_ADMIN"]
+}
