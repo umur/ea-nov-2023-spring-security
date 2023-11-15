@@ -48,9 +48,13 @@ public class SecurityConfig {
         http
                 .csrf().disable().cors().and()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/authenticate/**").permitAll()
-                //.requestMatchers("/api/v1/products").hasAuthority("USER")
-                .requestMatchers("/api/v1/products").hasAnyAuthority(roles) // Dynamic authorities
+                .requestMatchers("/uaa/**").permitAll()
+                .requestMatchers("/store").hasAuthority("ADMIN")
+                .requestMatchers("/address").hasAuthority("ADMIN")
+                .requestMatchers("/category").hasAuthority("ADMIN")
+                .requestMatchers("/user").hasAuthority("ADMIN")
+                .requestMatchers("/review").hasAnyAuthority(roles)
+                .requestMatchers("/products").hasAnyAuthority(roles) // Dynamic authorities
                 .anyRequest()
                 .authenticated()
                 .and()

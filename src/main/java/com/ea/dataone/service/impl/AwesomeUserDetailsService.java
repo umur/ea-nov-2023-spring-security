@@ -1,7 +1,7 @@
-package edu.miu.springsecurity1.service.impl;
+package com.ea.dataone.service.impl;
 
-import edu.miu.springsecurity1.repository.UserRepo;
-import edu.miu.springsecurity1.service.impl.AwesomeUserDetails;
+import com.ea.dataone.repository.UserRepo;
+import com.ea.dataone.service.impl.AwesomeUserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

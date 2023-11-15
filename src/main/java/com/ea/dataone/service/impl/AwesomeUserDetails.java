@@ -1,8 +1,8 @@
-package edu.miu.springsecurity1.service.impl;
+package com.ea.dataone.service.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import edu.miu.springsecurity1.entity.Role;
-import edu.miu.springsecurity1.entity.User;
+import com.ea.dataone.entity.Role;
+import com.ea.dataone.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

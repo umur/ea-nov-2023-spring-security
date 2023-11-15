@@ -24,4 +24,8 @@ public class User {
     @JoinColumn(name="user_id")
     private List<Review> reviews;
 
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private List<Role> roles;
+
 }

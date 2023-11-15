@@ -1,23 +1,26 @@
-package edu.miu.springsecurity1.service.impl;
+package com.ea.dataone.service.impl;
 
-import edu.miu.springsecurity1.entity.dto.request.LoginRequest;
-import edu.miu.springsecurity1.entity.dto.response.LoginResponse;
-import edu.miu.springsecurity1.entity.dto.request.RefreshTokenRequest;
-import edu.miu.springsecurity1.util.JwtUtil;
-import edu.miu.springsecurity1.service.AuthService;
+import com.ea.dataone.dto.LoginRequest;
+import com.ea.dataone.dto.LoginResponse;
+import com.ea.dataone.dto.RefreshTokenRequest;
+import com.ea.dataone.dto.RegisterRequest;
+import com.ea.dataone.entity.Role;
+import com.ea.dataone.entity.User;
+import com.ea.dataone.repository.UserRepo;
+import com.ea.dataone.service.AuthService;
+import com.ea.dataone.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.spi.ErrorMessage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +31,8 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
+    private final UserRepo userRepo;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
@@ -46,6 +51,23 @@ public class AuthServiceImpl implements AuthService {
         final String refreshToken = jwtUtil.generateRefreshToken(loginRequest.getEmail());
         var loginResponse = new LoginResponse(accessToken, refreshToken);
         return loginResponse;
+    }
+
+    @Override
+    public LoginResponse register(RegisterRequest registerRequest) {
+        User user = new User();
+        user.setEmail(registerRequest.getEmail());
+        user.setFirstName(registerRequest.getFirstname());
+        user.setLastName(registerRequest.getLastname());
+        user.getAddress().setStreet(registerRequest.getStreet());
+        user.getAddress().setCity(registerRequest.getCity());
+        user.getAddress().setZip(registerRequest.getZip());
+        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        Role role = new Role();
+        role.setRole(registerRequest.getRole());
+        user.setRoles(Arrays.asList(role));
+        userRepo.save(user);
+        return new LoginResponse();
     }
 
     @Override
