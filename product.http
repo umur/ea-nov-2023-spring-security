@@ -1,0 +1,17 @@
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "email": "user@gmail.com",
+  "password": "123"
+}
+
+####
+POST http://localhost:8080/products
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTcwMDAyOTM5OSwicm9sZXMiOlsidXNlciJdLCJleHAiOjE3MDAwMzAyOTl9.NwzUun4b8yk7kGysa7gkrFxYeGkey7RHZpQlJeKov2YqxlK5dYRIHJ4xs7Og2i4BW5RHRi8Ha-_U6e1ak8A23w
+
+{
+  "name": "spring product",
+  "price": 70.00
+}
