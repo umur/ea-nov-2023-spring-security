@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: spring-security-demo-1
+  datasource:
+    password: 1
+    url: jdbc:mysql://localhost:3307/spring-security-demo-1
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+server:
+  port: 8081
