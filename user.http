@@ -1,0 +1,45 @@
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "email": "admin@pr.com",
+  "firstname": "Omar",
+  "lastname": "Flayan",
+  "password": "000",
+  "roles": [
+    {
+      "role": "admin"
+    }
+  ]
+
+}
+###
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+"email": "user@pr.com",
+"firstname": "Omar",
+"lastname": "Flayan",
+"password": "000",
+"roles": [
+{
+  "role": "user"
+}
+]
+
+}
+
+###
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "email": "admin@pr.com",
+  "password": "000"
+}
+
+###
+GET http://localhost:8080/users
+Authorization: bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBwci5jb20iLCJpYXQiOjE3MDAwMTU0OTQsInJvbGVzIjpbImFkbWluIl0sImV4cCI6MTcwMDAxNjM5NH0.rvFW0BWgVlVs372L9Hfo9VgXOBmv2qWQj9B-FbcAsqnvLBwxk4F3tjDuYbKUQxsx_GnPx1XyFTFJQZqumeoVQA
+

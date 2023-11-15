@@ -1,0 +1,17 @@
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "email": "user@pr.com",
+  "password": "000"
+}
+
+####
+POST http://localhost:8080/products
+Authorization: bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQHByLmNvbSIsImlhdCI6MTcwMDAxNTYwOSwicm9sZXMiOlsidXNlciJdLCJleHAiOjE3MDAwMTY1MDl9.FnjkOc07C-4GH_O67mbegOzxBej-6bHCneHkfXAWbBvlakSOWRrghs4EZs3P78ePQQ5UFCTPs-Ipa9e6YTY2WA
+Content-Type: application/json
+
+{
+  "name": "Apple",
+  "price": 70.00
+}
