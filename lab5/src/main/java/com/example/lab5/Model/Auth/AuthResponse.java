@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
+
 @AllArgsConstructor
 public class AuthResponse {
     private String email;

@@ -1,5 +1,6 @@
 package com.example.lab5.Config;
 
+import com.example.lab5.Filter.JwtTokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,15 +16,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity(debug = true)
 public class SecurityConfig {
 
     private  final UserDetailsService userDetailsService;
+    private final JwtTokenFilter tokenFilter;
 @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
     httpSecurity.csrf(csrf->csrf.disable())
+            .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(auth->auth.requestMatchers("/auths/**").permitAll()
                     .anyRequest().authenticated())
             .sessionManagement(manager->manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
