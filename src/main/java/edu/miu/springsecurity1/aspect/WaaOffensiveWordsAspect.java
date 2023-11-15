@@ -21,9 +21,9 @@ public class WaaOffensiveWordsAspect {
 
     @Before("execution(* edu.miu.springsecurity1.controller.ProductController.*(..))")
     public void logOffensiveWords(JoinPoint joinPoint) {
-        Set<String> words = getWords(joinPoint.getArgs());
+        List<String> words = new ArrayList<>(getWords(joinPoint.getArgs()));
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-        if (bannedUsers.containsKey(userName) && bannedUsers.get(userName) <= System.currentTimeMillis()) {
+        if (bannedUsers.containsKey(userName) && bannedUsers.get(userName) > System.currentTimeMillis()) {
             throw new MaxBadWordRequestLimitException(String.format("Max Bad Words Requests Limit has been Reached. You need wait for %d minutes.",
                     getRemainingTime(userName)));
         }
@@ -43,7 +43,9 @@ public class WaaOffensiveWordsAspect {
         Set<String> words = new HashSet<>();
         for (Object arg : args) {
             if (arg instanceof String) {
-                words.add(((String)arg).toLowerCase());
+                if (OffensiveWordDictionary.isOffensiveWord((String)arg)) {
+                    words.addAll(OffensiveWordDictionary.getOffensiveWords((String)arg));
+                }
             } else {
                 try {
                     words.addAll(getWords(arg));
@@ -59,8 +61,14 @@ public class WaaOffensiveWordsAspect {
         Class<?> objClass = obj.getClass();
         Set<String> words = new HashSet<>();
         for (Field field : objClass.getDeclaredFields()) {
-            if (field.get(obj) instanceof String) {
-                words.add(((String)field.get(obj)).toLowerCase());
+            field.setAccessible(true);
+            if (field.getType() == String.class) {
+                String value = (String) field.get(obj);
+                if (OffensiveWordDictionary.isOffensiveWord(value.toLowerCase())) {
+                    words.addAll(OffensiveWordDictionary.getOffensiveWords(value.toLowerCase()));
+                    value = OffensiveWordDictionary.hideOffensiveWord(value);
+                }
+                field.set(obj, value);
             }
             else if (!field.getType().isPrimitive()) {
                 words.addAll(getWords(field));

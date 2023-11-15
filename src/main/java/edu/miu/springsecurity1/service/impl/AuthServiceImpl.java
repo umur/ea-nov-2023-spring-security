@@ -95,7 +95,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public User getCurrentlyLoggedInUser() {
-        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public AwesomeUserDetails getCurrentlyLoggedInUser() {
+        return (AwesomeUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

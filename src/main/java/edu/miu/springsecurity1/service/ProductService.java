@@ -9,6 +9,8 @@ public interface ProductService {
 
     void save(Product p);
 
+    void update(Product p, int id);
+
     void delete(int id);
 
     Product getById(int id);

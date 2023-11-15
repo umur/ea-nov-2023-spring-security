@@ -41,17 +41,17 @@ public class OffensiveRequest {
         lastAccessTime = System.currentTimeMillis();
     }
 
-    public void addOffensiveWords(Set<String> offensiveWords){
+    public void addOffensiveWords(List<String> offensiveWords){
         offensiveWords.stream().filter(OffensiveWordDictionary::isOffensiveWord)
                 .forEach(offensiveWord ->
-                        offensiveWordFrequencies.put(OffensiveWordDictionary.valueOf(offensiveWord),
-                                offensiveWordFrequencies.getOrDefault(OffensiveWordDictionary.valueOf(offensiveWord), 0) + 1));
+                        offensiveWordFrequencies.put(OffensiveWordDictionary.valueOf(offensiveWord.toUpperCase()),
+                                offensiveWordFrequencies.getOrDefault(OffensiveWordDictionary.valueOf(offensiveWord.toUpperCase()), 0) + 1));
         lastAccessTime = System.currentTimeMillis();
     }
     public void addOffensiveWord(String offensiveWord){
         try {
             if (OffensiveWordDictionary.isOffensiveWord(offensiveWord)) {
-                OffensiveWordDictionary offensiveWordDictionary = OffensiveWordDictionary.valueOf(offensiveWord);
+                OffensiveWordDictionary offensiveWordDictionary = OffensiveWordDictionary.valueOf(offensiveWord.toUpperCase());
                 offensiveWordFrequencies.put(offensiveWordDictionary,
                         offensiveWordFrequencies.getOrDefault(offensiveWordDictionary, 0) + 1);
                 lastAccessTime = System.currentTimeMillis();

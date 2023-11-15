@@ -6,6 +6,7 @@ import edu.miu.springsecurity1.entity.dto.request.SignupDto;
 import edu.miu.springsecurity1.entity.dto.response.LoginResponse;
 import edu.miu.springsecurity1.entity.dto.request.RefreshTokenRequest;
 import edu.miu.springsecurity1.entity.dto.response.SignupResponse;
+import edu.miu.springsecurity1.service.impl.AwesomeUserDetails;
 
 public interface AuthService {
     LoginResponse login(LoginRequest loginRequest);
@@ -13,5 +14,5 @@ public interface AuthService {
     SignupResponse signup(SignupDto loginRequest);
     LoginResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
 
-    User getCurrentlyLoggedInUser();
+    AwesomeUserDetails getCurrentlyLoggedInUser();
 }

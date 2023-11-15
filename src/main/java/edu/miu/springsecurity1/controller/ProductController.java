@@ -7,6 +7,7 @@ import edu.miu.springsecurity1.entity.Role;
 import edu.miu.springsecurity1.repository.ProductRepo;
 import edu.miu.springsecurity1.repository.UserRepo;
 import edu.miu.springsecurity1.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,8 +52,8 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") int productId) {
-        //call service
+    public void update(@PathVariable("id") int productId, @RequestBody @Valid Product p) {
+        productService.update(p, productId);
     }
 
     @GetMapping("/{id}/reviews")
