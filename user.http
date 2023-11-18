@@ -1,0 +1,45 @@
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "firstname": "Ibrahim admin",
+  "lastname": "Abu Hdaib",
+  "password": "123",
+  "roles": [
+    {
+      "id": 1
+    }
+  ]
+
+}
+###
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+"email": "user@gmail.com",
+"firstname": "Ibrahim  user",
+"lastname": "Abu Hdaib",
+"password": "123",
+"roles": [
+{
+"id": 2
+}
+]
+
+}
+
+###
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "123"
+}
+
+###
+GET http://localhost:8080/users
+Authorization: bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2OTk5NDEwNjUsInJvbGVzIjpbImFkbWluIl0sImV4cCI6MTY5OTk0MTk2NX0.dXWkziLyfVSA4zbdYBZSaENiPRaBjnOtPwDjnKfXxSwmGGMqD60yI_jQvrb1c8ZSwj8JWQ1XXGXTy1ftaCqtNA
+
