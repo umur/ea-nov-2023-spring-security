@@ -31,23 +31,26 @@ public class WaaOffensiveWords {
                 var fieldVal = field.get(arg);
                 if (fieldVal instanceof String) {
                     var fieldValStr = (String) fieldVal;
+                    boolean isDetected = false;
                     for (String badWord : badWords) {
                         if (fieldValStr.contains(badWord)) {
+                            isDetected = true;
                             while (fieldValStr.contains(badWord)) {
                                 fieldValStr = fieldValStr.replaceAll(badWord, "*".repeat(badWord.length()));
                             }
-                            var userDetails = (AwesomeUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                            var username =  userDetails.getUsername();
-                            if(blackListInfoMap.containsKey(username)){
-                                var currentInfo = blackListInfoMap.get(username);
-                                currentInfo.add(System.currentTimeMillis());
-                                blackListInfoMap.put(username, currentInfo);
-                            }
-                            else{
-                                List<Long> l = new ArrayList<>();
-                                l.add(System.currentTimeMillis());
-                                blackListInfoMap.put(username, l);
-                            }
+                        }
+                    }
+                    if(isDetected) {
+                        var userDetails = (AwesomeUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                        var username =  userDetails.getUsername();
+                        if (blackListInfoMap.containsKey(username)) {
+                            var currentInfo = blackListInfoMap.get(username);
+                            currentInfo.add(System.currentTimeMillis());
+                            blackListInfoMap.put(username, currentInfo);
+                        } else {
+                            List<Long> l = new ArrayList<>();
+                            l.add(System.currentTimeMillis());
+                            blackListInfoMap.put(username, l);
                         }
                     }
                     field.set(arg, fieldValStr);

@@ -31,13 +31,13 @@ public class WaaRequestFilter {
         var username =  userDetails.getUsername();
         var info = blackListInfoMap.get(username);
         if (info != null) {
-            if (last30MinCount(info) == 2) {
-                var dif = System.currentTimeMillis() - info.get(1);
+            if (last30MinCount(info) == 5) {
+                var dif = System.currentTimeMillis() - info.get(4);
                 if (dif > 900000L) {
                     blackListInfoMap.remove(username);
                 } else {
                     var minutes = (dif/1000)/60;
-                    return new ResponseEntity<>("Max Bad Words Requests Limit has been Reached. You need wait for " +  minutes + " minutes",
+                    return new ResponseEntity<>("Max Bad Words Requests Limit has been Reached. You need wait for " +  (15 - minutes) + " minutes",
                             HttpStatus.BAD_REQUEST);
                 }
             }
